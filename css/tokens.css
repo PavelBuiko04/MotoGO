@@ -1,0 +1,24 @@
+/* Свотчи клиента сохранены. Подача другая: дисплейный Unbounded
+   только у главного заголовка и слов «Авто» / «Мото», остальное — IBM Plex Sans. */
+
+:root {
+  --color-graphite: #101112;
+  --color-block: #303234;
+  --color-white: #ffffff;
+  --color-gray: #a3a3a4;
+  --color-accent: #ff7a00;
+  --color-accent-hover: #e56e00;
+  --color-canvas: #f4f4f4;
+  --color-ink: #101112;
+  --color-body: #3e4246;
+  --color-meta: #5e6368;
+  --color-line: #d5d5d2;
+  --color-warning: #d64545;
+
+  --font-sans: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-display: "Unbounded", "IBM Plex Sans", sans-serif;
+
+  --content: 1120px;
+  --header: 68px;
+  --measure: 62ch;
+}

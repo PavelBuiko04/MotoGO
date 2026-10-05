@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>MotoGO — подбор авто из США без восстановления</title>
+    <meta
+      name="description"
+      content="Ярослав и MotoGO подбирают автомобиль из США под бюджет: проверяем вариант, отсекаем плохой и показываем экономику до покупки. Без восстановления."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#101112" />
+    <link rel="canonical" href="https://motogo.by/" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_BY" />
+    <meta property="og:site_name" content="MotoGO" />
+    <meta property="og:title" content="MotoGO — подбор автомобиля из США без восстановления" />
+    <meta
+      property="og:description"
+      content="Поможем выбрать правильный автомобиль из США, не дадим купить плохой вариант и покажем всю экономику сделки до покупки."
+    />
+    <meta property="og:url" content="https://motogo.by/" />
+    <meta property="og:image" content="https://motogo.by/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="MotoGO — подбор автомобиля из США под бюджет, без восстановления"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MotoGO — подбор автомобиля из США без восстановления" />
+    <meta
+      name="twitter:description"
+      content="Поможем выбрать правильный автомобиль из США, не дадим купить плохой вариант и покажем всю экономику сделки до покупки."
+    />
+    <meta name="twitter:image" content="https://motogo.by/assets/og.png" />
+    <meta
+      name="twitter:image:alt"
+      content="MotoGO — подбор автомобиля из США под бюджет, без восстановления"
+    />
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "MotoGO",
+        "url": "https://motogo.by/",
+        "image": "https://motogo.by/assets/og.png",
+        "description": "Подбор, проверка, покупка и доставка автомобилей из США в Беларусь. Без восстановления: плохой вариант отсекаем, экономику сделки показываем до покупки.",
+        "areaServed": "Беларусь",
+        "founder": {
+          "@type": "Person",
+          "name": "Ярослав"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!--
+      Этап 1: одна страница, одна услуга, сбор заявки.
+      Порядок блоков — с эскиза: герой (Ярослав, YouTube, фраза, форма) → 6 шагов → Авто/Мото → отзывы → FAQ → подвал.
+      Нет каталога, кабинета, калькулятора, блога, аукциона и отдельных сайтов.
+      Домен https://motogo.by/ — плейсхолдер, пока боевой адрес не передан.
+    -->
+    <a class="skip" href="#main">К содержанию</a>
+
+    <header class="header">
+      <div class="container header__inner">
+        <a class="logo" href="#hero">Moto<span>GO</span></a>
+        <nav class="nav" id="site-nav" aria-label="Разделы страницы">
+          <a href="#kak-my-rabotaem">Как мы работаем</a>
+          <a href="#uslugi">Услуги</a>
+          <a href="#otzyvy">Отзывы</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <a class="button button--primary header__cta" href="#zayavka">
+          <span class="button__full">Рассчитать автомобиль</span>
+          <span class="button__short">Заявка</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          Меню
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="hero" aria-labelledby="hero-title">
+        <div class="container hero__grid">
+          <figure class="portrait">
+            <img
+              src="assets/portrait-slot.svg"
+              width="800"
+              height="1000"
+              alt="Ярослав, основатель MotoGO, на фоне автомобиля из США"
+            />
+            <figcaption>
+              <p class="portrait__kicker">Авто из США</p>
+              <div class="portrait__id">
+                <p class="portrait__name">Ярослав</p>
+                <p class="portrait__bio">
+                  Лично ведёт MotoGO: показывает машину и объясняет, почему этот вариант стоит брать.
+                </p>
+              </div>
+            </figcaption>
+          </figure>
+
+          <div class="hero__copy">
+            <h1 id="hero-title">Автомобиль<br>из США<br>под ваш бюджет</h1>
+            <p class="lead">
+              Подбираем машину в США и привозим в Беларусь. Плохой вариант отсекаем.
+              Расходы показываем до покупки, без восстановления.
+            </p>
+            <a class="text-link" href="#kak-my-rabotaem">Как мы работаем</a>
+
+            <div class="video">
+              <img
+                src="assets/video-slot.svg"
+                width="1280"
+                height="720"
+                alt="Видео Ярослава: как MotoGO проверяет автомобиль из США до покупки"
+              />
+              <button class="video__play" type="button" data-video-trigger>
+                <span class="visually-hidden">Смотреть видео Ярослава о подборе автомобиля из США</span>
+              </button>
+              <p class="video__label">YouTube</p>
+              <p class="video__caption">Ярослав показывает, как устроен подбор</p>
+            </div>
+
+            <div class="hero__bottom">
+              <ul class="phrases">
+                <li>
+                  <strong>США</strong>
+                  <span>Подбор под задачу, не витрина лотов</span>
+                </li>
+                <li>
+                  <strong>Проверка</strong>
+                  <span>Плохой вариант не доходит до сделки</span>
+                </li>
+                <li>
+                  <strong>Без восстановления</strong>
+                  <span>На ремонте битых машин не зарабатываем</span>
+                </li>
+                <li>
+                  <strong>Экономика</strong>
+                  <span>Основные расходы видны до покупки</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="hero__sheet">
+          <div class="container">
+            <form
+                class="form"
+                id="zayavka"
+                data-lead-form
+                data-source="hero"
+                data-require="budget"
+                aria-label="Рассчитать автомобиль"
+                novalidate
+              >
+                <h2>Рассчитать автомобиль</h2>
+                <p class="form__note" id="hero-form-note">
+                  Менеджер считает экономику по бюджету и называет стоимость услуги до старта.
+                </p>
+                <div class="form__row">
+                  <label class="field">
+                    <span>Имя</span>
+                    <input name="name" type="text" autocomplete="name" required />
+                  </label>
+                  <label class="field">
+                    <span>Телефон</span>
+                    <input name="phone" type="tel" autocomplete="tel" required />
+                  </label>
+                </div>
+                <div class="form__row">
+                  <label class="field">
+                    <span>Бюджет, USD</span>
+                    <input name="budget" type="text" inputmode="decimal" required />
+                  </label>
+                  <label class="field">
+                    <span>Что подбираем</span>
+                    <select name="kind">
+                      <option>Автомобиль</option>
+                      <option>Мотоцикл</option>
+                      <option>Пока не решил</option>
+                    </select>
+                  </label>
+                </div>
+                <label class="field">
+                  <span>Задача</span>
+                  <textarea name="comment" rows="3"></textarea>
+                </label>
+                <div class="visually-hidden" aria-hidden="true">
+                  <label>
+                    Сайт
+                    <input name="website" type="text" tabindex="-1" autocomplete="off" />
+                  </label>
+                </div>
+                <p class="form__status" data-status role="status" aria-describedby="hero-form-note"></p>
+                <button class="button button--primary button--block" type="submit">Рассчитать автомобиль</button>
+              </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="kak-my-rabotaem" aria-labelledby="steps-title">
+        <div class="container">
+          <div class="section__head">
+            <h2 id="steps-title">Как мы работаем</h2>
+            <p>Сначала проверка и экономика, потом покупка.</p>
+          </div>
+          <ol class="steps">
+            <li class="steps__item">
+              <span class="steps__index">01</span>
+              <h3>Заявка</h3>
+              <p>Бюджет, задача и сроки. Отсюда начинается подбор, не из каталога.</p>
+            </li>
+            <li class="steps__item">
+              <span class="steps__index">02</span>
+              <h3>Подбор</h3>
+              <p>Варианты под ваши условия. Случайный лот в работу не берём.</p>
+            </li>
+            <li class="steps__item">
+              <span class="steps__index">03</span>
+              <h3>Проверка</h3>
+              <p>История, фото, состояние. Если вариант плохой, до покупки он не доходит.</p>
+            </li>
+            <li class="steps__item">
+              <span class="steps__index">04</span>
+              <h3>Экономика</h3>
+              <p>Автомобиль, доставка, пошлины и итог — до того, как вы говорите «да».</p>
+            </li>
+            <li class="steps__item">
+              <span class="steps__index">05</span>
+              <h3>Покупка</h3>
+              <p>Торги и сделка только после согласования экономики.</p>
+            </li>
+            <li class="steps__item">
+              <span class="steps__index">06</span>
+              <h3>Доставка</h3>
+              <p>Автомобиль едет в Беларусь. Этапа восстановления в этой услуге нет.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="uslugi" aria-labelledby="services-title">
+        <div class="container">
+          <div class="section__head">
+            <h2 id="services-title">Услуги</h2>
+            <p>Подбор техники из США. Автомобиль — основной запрос. Мотоцикл идёт по той же схеме.</p>
+          </div>
+          <p class="warning">
+            <span class="warning__dot" aria-hidden="true"></span>
+            Важно: на восстановлении не зарабатываем
+          </p>
+          <div class="services">
+            <article>
+              <h3>Авто</h3>
+              <p>
+                Подбираем, проверяем, покупаем и доставляем автомобиль из США под бюджет.
+                Стоимость услуги называем до старта и не прячем её в ремонт.
+              </p>
+            </article>
+            <article>
+              <h3>Мото</h3>
+              <p>
+                Тот же принцип для мотоцикла: задача, проверка, прозрачные расходы.
+                Отдельного сайта и каталога под это нет.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="otzyvy" aria-labelledby="reviews-title">
+        <div class="container">
+          <div class="section__head">
+            <h2 id="reviews-title">Отзывы</h2>
+            <p>Три сделки: модель, бюджет и что отсеяли. Цифры ставим только по фактам.</p>
+          </div>
+          <!-- Подписи на эскизе сверить с клиентом: читаются примерно как «Ярослав», «Покуп…», «Без хвоста». -->
+          <div class="reviews">
+            <article>
+              <h3>Модель</h3>
+              <p>Какой автомобиль взяли в работу и почему он прошёл проверку.</p>
+            </article>
+            <article>
+              <h3>Экономика</h3>
+              <p>Бюджет клиента и итог сделки: что вошло в расчёт до покупки.</p>
+            </article>
+            <article>
+              <h3>Отказ</h3>
+              <p>Какой вариант не стали покупать и что в нём не сошлось.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="container">
+          <div class="section__head">
+            <h2 id="faq-title">FAQ</h2>
+          </div>
+          <div class="faq">
+            <article class="faq__item">
+              <h3 class="faq__heading">
+                <button class="faq__button" type="button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
+                  Вы восстанавливаете автомобили?
+                  <span class="faq__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
+                <p>
+                  Нет. MotoGO не зарабатывает на ремонте битых автомобилей. В подбор не берём
+                  машину, которую после покупки нужно восстанавливать, чтобы сойтись в цене.
+                </p>
+              </div>
+            </article>
+            <article class="faq__item">
+              <h3 class="faq__heading">
+                <button class="faq__button" type="button" aria-expanded="false" aria-controls="faq-panel-2" id="faq-button-2">
+                  Когда видна экономика сделки?
+                  <span class="faq__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq__panel" id="faq-panel-2" role="region" aria-labelledby="faq-button-2" hidden>
+                <p>
+                  До покупки. В расчёт входят основные расходы: автомобиль, доставка, пошлины и
+                  сопутствующие платежи. По конкретной машине это считает менеджер.
+                </p>
+              </div>
+            </article>
+            <article class="faq__item">
+              <h3 class="faq__heading">
+                <button class="faq__button" type="button" aria-expanded="false" aria-controls="faq-panel-3" id="faq-button-3">
+                  Сколько стоит услуга?
+                  <span class="faq__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq__panel" id="faq-panel-3" role="region" aria-labelledby="faq-button-3" hidden>
+                <p>
+                  Стоимость называем до старта подбора. Она не спрятана в ремонт. На сайте нет
+                  калькулятора: бюджет и задача уходят в заявку.
+                </p>
+              </div>
+            </article>
+            <article class="faq__item">
+              <h3 class="faq__heading">
+                <button class="faq__button" type="button" aria-expanded="false" aria-controls="faq-panel-4" id="faq-button-4">
+                  Почему на сайте нет каталога?
+                  <span class="faq__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq__panel" id="faq-panel-4" role="region" aria-labelledby="faq-button-4" hidden>
+                <p>
+                  Подбор начинается с вашей задачи и бюджета. Витрины случайных лотов здесь нет:
+                  менеджер возвращается с проверенными вариантами и экономикой.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="kontakty">
+      <div class="container footer__grid">
+        <div>
+          <p class="footer__label">Контакты</p>
+          <ul class="contacts">
+            <li>
+              <span class="contacts__label">География</span>
+              <span>Беларусь, авто из США</span>
+            </li>
+            <li>
+              <span class="contacts__label">Телефон</span>
+              <span data-phone-value>—</span>
+            </li>
+            <li>
+              <span class="contacts__label">Мессенджер</span>
+              <span data-messenger-value>—</span>
+            </li>
+          </ul>
+        </div>
+        <div data-instagram>
+          <p class="footer__label">Instagram</p>
+          <p data-instagram-slot>—</p>
+        </div>
+        <div>
+          <p class="footer__label">MotoGO</p>
+          <p class="footer__logo">Moto<span>GO</span></p>
+        </div>
+        <form class="form" data-lead-form data-source="footer" aria-label="Заявка в подвале" novalidate>
+          <h2>Рассчитать автомобиль</h2>
+          <p class="form__note">Имя и телефон. Бюджет можно дописать менеджеру.</p>
+          <label class="field">
+            <span>Имя</span>
+            <input name="name" type="text" autocomplete="name" required />
+          </label>
+          <label class="field">
+            <span>Телефон</span>
+            <input name="phone" type="tel" autocomplete="tel" required />
+          </label>
+          <div class="visually-hidden" aria-hidden="true">
+            <label>
+              Сайт
+              <input name="website" type="text" tabindex="-1" autocomplete="off" />
+            </label>
+          </div>
+          <p class="form__status" data-status role="status"></p>
+          <button class="button button--primary button--block" type="submit">Рассчитать автомобиль</button>
+        </form>
+      </div>
+      <div class="container">
+        <p class="footer__legal">© <span data-year>2026</span> MotoGO. Подбор автомобиля из США.</p>
+      </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
