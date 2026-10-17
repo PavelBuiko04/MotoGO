@@ -1,5 +1,5 @@
 (function () {
-  var config = window.MOTOGO_CONFIG || {};
+  var config = window.AUTOGO_CONFIG || {};
 
   var yearNode = document.querySelector("[data-year]");
   if (yearNode) yearNode.textContent = String(new Date().getFullYear());
@@ -69,9 +69,12 @@
     slot.replaceChildren(link);
   }
 
-  setLink("[data-instagram-slot]", config.instagramUrl, "Открыть профиль");
+  if (config.instagramUrl) {
+    setLink("[data-instagram-slot]", config.instagramUrl, "Instagram");
+  }
 
   var phoneSlot = document.querySelector("[data-phone-value]");
+  var phoneRow = document.querySelector("[data-phone-row]");
   if (phoneSlot && config.phoneDisplay) {
     if (config.phoneHref) {
       var phoneLink = document.createElement("a");
@@ -81,9 +84,11 @@
     } else {
       phoneSlot.textContent = config.phoneDisplay;
     }
+    if (phoneRow) phoneRow.hidden = false;
   }
 
   var messengerSlot = document.querySelector("[data-messenger-value]");
+  var messengerRow = document.querySelector("[data-messenger-row]");
   if (messengerSlot && config.messengerUrl) {
     var messengerLink = document.createElement("a");
     messengerLink.href = config.messengerUrl;
@@ -91,6 +96,7 @@
     messengerLink.rel = "noopener noreferrer";
     messengerLink.textContent = config.messengerLabel || "Написать";
     messengerSlot.replaceChildren(messengerLink);
+    if (messengerRow) messengerRow.hidden = false;
   }
 
   function youtubeId(url) {
@@ -124,7 +130,7 @@
       var frame = document.createElement("iframe");
       frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
       frame.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
-      frame.title = "Видео Ярослава: как MotoGO проверяет автомобиль из США до покупки";
+      frame.title = "Видео Ярослава: как AutoGo проверяет автомобиль из США до покупки";
       frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       frame.allowFullscreen = true;
       videoBox.replaceChildren(frame);
@@ -205,4 +211,28 @@
         });
     });
   });
+
+  var cookie = document.querySelector("[data-cookie]");
+  if (cookie) {
+    var accepted = false;
+    try {
+      accepted = localStorage.getItem("autogo-cookies") === "1";
+    } catch (error) {
+      accepted = false;
+    }
+
+    if (!accepted) cookie.hidden = false;
+
+    var accept = cookie.querySelector("[data-cookie-ok]");
+    if (accept) {
+      accept.addEventListener("click", function () {
+        try {
+          localStorage.setItem("autogo-cookies", "1");
+        } catch (error) {
+          accepted = true;
+        }
+        cookie.hidden = true;
+      });
+    }
+  }
 })();
