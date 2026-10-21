@@ -21,16 +21,21 @@
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".nav");
 
+  function setToggle(open) {
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Закрыть меню" : "Меню");
+  }
+
   function closeNav() {
     if (!toggle || !nav) return;
     nav.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
+    setToggle(false);
   }
 
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      setToggle(open);
     });
 
     nav.addEventListener("click", function (event) {
@@ -104,37 +109,165 @@
     return match ? match[1] : "";
   }
 
-  var videoTrigger = document.querySelector("[data-video-trigger]");
-  var videoId = youtubeId(config.youtubeUrl);
+  var reel = document.querySelector("[data-reel]");
+  var track = document.querySelector("[data-reel-track]");
+  var videos = Array.isArray(config.videos) ? config.videos.filter(function (item) { return item && item.id; }) : [];
 
-  if (videoTrigger) {
-    var videoBox = videoTrigger.closest(".video");
-    var poster = videoBox ? videoBox.querySelector("img") : null;
+  if (!videos.length && config.youtubeUrl) {
+    var onlyId = youtubeId(config.youtubeUrl);
+    if (onlyId) videos = [{ id: onlyId, title: "Ролик Ярослава" }];
+  }
 
-    if (videoId && poster) {
-      poster.src = "https://i.ytimg.com/vi/" + videoId + "/maxresdefault.jpg";
+  if (reel && track && videos.length) {
+    videos.forEach(function (item) {
+      var card = document.createElement("article");
+      card.className = "video";
+
+      var poster = document.createElement("img");
+      poster.alt = "";
+      poster.width = 1280;
+      poster.height = 720;
+      poster.src = "https://i.ytimg.com/vi/" + item.id + "/maxresdefault.jpg";
+      poster.addEventListener("error", function () {
+        poster.src = "https://i.ytimg.com/vi/" + item.id + "/hqdefault.jpg";
+      });
+
+      var play = document.createElement("button");
+      play.className = "video__play";
+      play.type = "button";
+      play.setAttribute("data-video-id", item.id);
+      var playText = document.createElement("span");
+      playText.className = "visually-hidden";
+      playText.textContent = "Смотреть: " + (item.title || "ролик");
+      play.appendChild(playText);
+
+      var caption = document.createElement("p");
+      caption.className = "video__caption";
+      caption.textContent = item.title || "";
+
+      card.appendChild(poster);
+      card.appendChild(play);
+      card.appendChild(caption);
+      track.appendChild(card);
+    });
+
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var paused = false;
+    var playing = false;
+    var timer = 0;
+    var drag = null;
+    var suppressClick = false;
+
+    function cardStep() {
+      var card = track.querySelector(".video");
+      if (!card) return track.clientWidth;
+      var styles = getComputedStyle(track);
+      var gap = parseFloat(styles.columnGap || styles.gap) || 0;
+      return card.getBoundingClientRect().width + gap;
     }
 
-    if (!videoId) {
-      videoTrigger.title = "Ссылку на ролик добавьте в js/config.js";
+    function advance() {
+      var max = track.scrollWidth - track.clientWidth - 8;
+      var next = track.scrollLeft + cardStep();
+      track.scrollTo({
+        left: next > max ? 0 : next,
+        behavior: reduceMotion ? "auto" : "smooth"
+      });
     }
 
-    videoTrigger.addEventListener("click", function () {
-      if (!videoId || !videoBox) return;
+    function arm() {
+      window.clearInterval(timer);
+      if (reduceMotion || paused || playing || videos.length < 2 || document.hidden) return;
+      timer = window.setInterval(advance, 4800);
+    }
+
+    function playVideo(button) {
+      var id = button.getAttribute("data-video-id");
+      var box = button.closest(".video");
+      if (!id || !box) return;
+      playing = true;
+      arm();
 
       if (window.location.protocol === "file:") {
-        window.open("https://www.youtube.com/watch?v=" + videoId, "_blank", "noopener");
+        window.open("https://www.youtube.com/watch?v=" + id, "_blank", "noopener");
         return;
       }
 
       var frame = document.createElement("iframe");
       frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
-      frame.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
-      frame.title = "Видео Ярослава: как AutoGo проверяет автомобиль из США до покупки";
+      frame.src = "https://www.youtube.com/embed/" + id + "?autoplay=1&rel=0";
+      frame.title = button.textContent.trim() || "Ролик Ярослава";
       frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       frame.allowFullscreen = true;
-      videoBox.replaceChildren(frame);
+      box.replaceChildren(frame);
+    }
+
+    track.addEventListener("click", function (event) {
+      if (suppressClick) {
+        suppressClick = false;
+        return;
+      }
+      var button = event.target.closest("[data-video-id]");
+      if (button) playVideo(button);
     });
+
+    track.addEventListener("pointerdown", function (event) {
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      drag = { x: event.clientX, left: track.scrollLeft, moved: false, id: event.pointerId };
+      track.classList.add("is-dragging");
+      paused = true;
+      arm();
+    });
+
+    track.addEventListener("pointermove", function (event) {
+      if (!drag || drag.id !== event.pointerId) return;
+      var dx = event.clientX - drag.x;
+      if (Math.abs(dx) > 6) drag.moved = true;
+      if (drag.moved) track.scrollLeft = drag.left - dx;
+    });
+
+    function endDrag(event) {
+      if (!drag || (event && drag.id !== event.pointerId)) return;
+      suppressClick = drag.moved;
+      drag = null;
+      track.classList.remove("is-dragging");
+      paused = false;
+      arm();
+    }
+
+    track.addEventListener("pointerup", endDrag);
+    track.addEventListener("pointercancel", endDrag);
+
+    track.addEventListener("mouseenter", function () {
+      paused = true;
+      arm();
+    });
+    track.addEventListener("mouseleave", function () {
+      if (!drag) {
+        paused = false;
+        arm();
+      }
+    });
+    track.addEventListener("focusin", function () {
+      paused = true;
+      arm();
+    });
+    track.addEventListener("focusout", function () {
+      paused = false;
+      arm();
+    });
+
+    track.addEventListener("keydown", function (event) {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      event.preventDefault();
+      track.scrollBy({
+        left: (event.key === "ArrowRight" ? 1 : -1) * cardStep(),
+        behavior: reduceMotion ? "auto" : "smooth"
+      });
+    });
+
+    document.addEventListener("visibilitychange", arm);
+    arm();
   }
 
   function fieldValue(form, name) {
@@ -156,6 +289,7 @@
       if (fieldValue(form, "website")) return;
 
       var payload = {
+        token: config.crmToken || "",
         name: fieldValue(form, "name"),
         phone: fieldValue(form, "phone"),
         budget: fieldValue(form, "budget"),
@@ -192,14 +326,11 @@
 
       fetch(config.crmEndpoint, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload)
       })
-        .then(function (response) {
-          if (!response.ok) throw new Error("crm");
+        .then(function () {
           setStatus(form, "ok", "Расчёт ушёл менеджеру. Он свяжется с вами.");
           form.reset();
         })

@@ -44,7 +44,7 @@
     />
 
     <link rel="stylesheet" href="css/tokens.css" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=6" />
 
     <script type="application/ld+json">
       {
@@ -87,8 +87,8 @@
           <span class="button__full">Рассчитать автомобиль</span>
           <span class="button__short">Заявка</span>
         </a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-          Меню
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Меню">
+          <span class="nav-toggle__icon" aria-hidden="true"></span>
         </button>
       </div>
     </header>
@@ -108,7 +108,7 @@
               <div class="portrait__id">
                 <p class="portrait__name">Ярослав</p>
                 <p class="portrait__bio">
-                  Я автор YouTube-канала AutoGo. Сам привозил автомобили из США и восстанавливал их, поэтому знаю этот процесс изнутри и помогу тебе сделать правильный выбор.
+                  Я автор YouTube-канала MotoGo. Сам привозил автомобили из США и восстанавливал их, поэтому знаю этот процесс изнутри и помогу тебе сделать правильный выбор.
                 </p>
               </div>
             </figcaption>
@@ -118,18 +118,8 @@
             <h1 id="hero-title">Автомобиль<br>из США<br>под ваш бюджет</h1>
             <p class="lead">Поможем найти твою машину в Америке.</p>
 
-            <div class="video">
-              <img
-                src="assets/video-slot.svg"
-                width="1280"
-                height="720"
-                alt="Видео Ярослава: как AutoGo проверяет автомобиль из США до покупки"
-              />
-              <button class="video__play" type="button" data-video-trigger>
-                <span class="visually-hidden">Смотреть видео Ярослава о подборе автомобиля из США</span>
-              </button>
-              <p class="video__label">YouTube</p>
-              <p class="video__caption">Ярослав показывает, как устроен подбор</p>
+            <div class="reel" data-reel>
+              <div class="reel__track" data-reel-track tabindex="0" aria-label="Ролики Ярослава"></div>
             </div>
 
             <div class="hero__bottom">
@@ -184,13 +174,19 @@
                     <span>Бюджет, USD</span>
                     <input name="budget" type="text" inputmode="decimal" required />
                   </label>
-                  <label class="field">
-                    <span>Что подбираем</span>
-                    <select name="kind">
-                      <option>Автомобиль</option>
-                      <option>Мотоцикл</option>
-                    </select>
-                  </label>
+                  <div class="field">
+                    <span id="kind-label">Что подбираем</span>
+                    <div class="choice" role="radiogroup" aria-labelledby="kind-label">
+                      <label class="choice__item">
+                        <input type="radio" name="kind" value="Автомобиль" checked />
+                        Автомобиль
+                      </label>
+                      <label class="choice__item">
+                        <input type="radio" name="kind" value="Мотоцикл" />
+                        Мотоцикл
+                      </label>
+                    </div>
+                  </div>
                 </div>
                 <label class="field">
                   <span>Задача</span>
@@ -298,22 +294,17 @@
           </div>
           <div class="press">
             <article class="press__lead">
-              <p class="press__source">av.by</p>
-              <h3>Новая статья</h3>
-              <p>Ещё не вышла. Когда публикация откроется, здесь будет ссылка.</p>
+              <img class="press__logo" src="assets/press/av.png" width="32" height="32" alt="" />
+              <div>
+                <p class="press__source">av.by</p>
+                <h3>Новая статья</h3>
+                <p>Ещё не вышла. Когда публикация откроется, здесь будет ссылка.</p>
+              </div>
             </article>
             <ol class="press__list">
               <li>
-                <a href="https://tech.onliner.by/2018/11/27/motogo" target="_blank" rel="noopener noreferrer">
-                  <span class="press__meta">
-                    <span class="press__source">Onliner</span>
-                    <time datetime="2018-11-27">27 ноября 2018</time>
-                  </span>
-                  <h3>Белорус выиграл конкурс YouTube. История начинающего кастомайзера с «зазоциклом» из Ошмян</h3>
-                </a>
-              </li>
-              <li>
                 <a href="https://auto.onliner.by/2025/03/29/bezumnye-proekty-minskogo-motoblogera" target="_blank" rel="noopener noreferrer">
+                  <img class="press__logo" src="assets/press/onliner.png" width="32" height="32" alt="" />
                   <span class="press__meta">
                     <span class="press__source">Onliner</span>
                     <time datetime="2025-03-29">29 марта 2025</time>
@@ -322,12 +313,33 @@
                 </a>
               </li>
               <li>
-                <a href="https://www.osh.by/?p=48563" target="_blank" rel="noopener noreferrer">
+                <a href="https://abw.by/news/moto/2024/10/23/motocikl-s-dizelem-ot-volkswagen-i-kpp-ot-bmw-kastomaizing-pobelorusski" target="_blank" rel="noopener noreferrer">
+                  <img class="press__logo" src="assets/press/abw.png" width="32" height="32" alt="" />
                   <span class="press__meta">
-                    <span class="press__source">osh.by</span>
-                    <time datetime="2018-11-28">28 ноября 2018</time>
+                    <span class="press__source">ABW</span>
+                    <time datetime="2024-10-23">23 октября 2024</time>
                   </span>
-                  <h3>Парень из Ошмян выиграл конкурс YouTube. История начинающего кастомайзера с «зазоциклом»</h3>
+                  <h3>Мотоцикл с дизелем от Volkswagen и КПП от BMW: кастомайзинг по-белорусски</h3>
+                </a>
+              </li>
+              <li>
+                <a href="https://av.by/news/belorus-sobral-turbodizelnyi-motocycle" target="_blank" rel="noopener noreferrer">
+                  <img class="press__logo" src="assets/press/av.png" width="32" height="32" alt="" />
+                  <span class="press__meta">
+                    <span class="press__source">av.by</span>
+                    <time datetime="2024-03-24">24 марта 2024</time>
+                  </span>
+                  <h3>Чумовая самоделка! Рассказываем, как минчанин примостил мотор 1.4 TDI от VW Polo на мотоцикл</h3>
+                </a>
+              </li>
+              <li>
+                <a href="https://tech.onliner.by/2018/11/27/motogo" target="_blank" rel="noopener noreferrer">
+                  <img class="press__logo" src="assets/press/onliner.png" width="32" height="32" alt="" />
+                  <span class="press__meta">
+                    <span class="press__source">Onliner</span>
+                    <time datetime="2018-11-27">27 ноября 2018</time>
+                  </span>
+                  <h3>Белорус выиграл конкурс YouTube. История начинающего кастомайзера с «зазоциклом» из Ошмян</h3>
                 </a>
               </li>
             </ol>
@@ -404,30 +416,31 @@
 
     <footer class="footer" id="kontakty">
       <div class="container footer__grid">
-        <div class="contacts">
-          <p class="footer__label">Контакты</p>
-          <p class="contacts__name">Денисенко<br>Ярослав Викторович</p>
-          <p class="contacts__meta"><span>ИП</span><span>УНП 591705197</span></p>
-          <p class="contacts__place">Беларусь, авто из США</p>
-          <p class="contacts__line" data-phone-row hidden>
-            <span class="contacts__label">Телефон</span>
-            <span data-phone-value></span>
-          </p>
-          <p class="contacts__line" data-messenger-row hidden>
-            <span class="contacts__label">Мессенджер</span>
-            <span data-messenger-value></span>
-          </p>
-        </div>
-        <div class="socials">
-          <p class="footer__label">Соцсети</p>
-          <ul class="socials__list">
-            <li data-instagram-slot>Instagram</li>
-            <li><a href="https://www.youtube.com/@MotoGOBelarus" target="_blank" rel="noopener noreferrer">YouTube</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="footer__label">AutoGo</p>
-          <p class="footer__logo">Auto<span>Go</span></p>
+        <div class="footer__identity">
+          <div class="contacts">
+            <p class="footer__label">Контакты</p>
+            <p class="contacts__name">Денисенко<br>Ярослав Викторович</p>
+            <p class="contacts__meta"><span>ИП</span><span>УНП 591705197</span></p>
+            <p class="contacts__place">Беларусь, авто из США</p>
+            <p class="contacts__line" data-phone-row hidden>
+              <span class="contacts__label">Телефон</span>
+              <span data-phone-value></span>
+            </p>
+            <p class="contacts__line" data-messenger-row hidden>
+              <span class="contacts__label">Мессенджер</span>
+              <span data-messenger-value></span>
+            </p>
+          </div>
+          <div class="footer__aside">
+            <div class="socials">
+              <p class="footer__label">Соцсети</p>
+              <ul class="socials__list">
+                <li data-instagram-slot>Instagram</li>
+                <li><a href="https://www.youtube.com/@MotoGOBelarus" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+              </ul>
+            </div>
+            <p class="footer__logo">Auto<span>Go</span></p>
+          </div>
         </div>
         <form class="form" data-lead-form data-source="footer" aria-label="Заявка в подвале" novalidate>
           <h2>Рассчитать автомобиль</h2>
@@ -451,7 +464,13 @@
         </form>
       </div>
       <div class="container">
-        <p class="footer__legal">© <span data-year>2026</span> AutoGo. ИП Денисенко Ярослав Викторович, УНП 591705197. <a href="cookies.html">Куки</a> <a href="privacy.html">Политика конфиденциальности</a></p>
+        <div class="footer__legal">
+          <p>© <span data-year>2026</span> AutoGo. ИП Денисенко Ярослав Викторович, УНП 591705197.</p>
+          <p class="footer__links">
+            <a href="cookies.html">Куки</a>
+            <a href="privacy.html">Политика конфиденциальности</a>
+          </p>
+        </div>
       </div>
     </footer>
 
@@ -465,7 +484,7 @@
       <button class="button" type="button" data-cookie-ok>Понятно!</button>
     </div>
 
-    <script src="js/config.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/config.js?v=4"></script>
+    <script src="js/main.js?v=5"></script>
   </body>
 </html>
