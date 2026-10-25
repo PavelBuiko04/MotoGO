@@ -78,6 +78,10 @@
     setLink("[data-instagram-slot]", config.instagramUrl, "Instagram");
   }
 
+  if (config.tiktokUrl) {
+    setLink("[data-tiktok-slot]", config.tiktokUrl, "TikTok");
+  }
+
   var phoneSlot = document.querySelector("[data-phone-value]");
   var phoneRow = document.querySelector("[data-phone-row]");
   if (phoneSlot && config.phoneDisplay) {
@@ -365,5 +369,66 @@
         cookie.hidden = true;
       });
     }
+  }
+
+  var promo = document.querySelector("[data-promo]");
+  if (promo) {
+    var sheet = promo.querySelector(".promo__sheet");
+    var pin = document.querySelector("[data-promo-pin]");
+
+    function closePromo(focusPin) {
+      promo.hidden = true;
+      if (pin) pin.hidden = false;
+      if (focusPin && pin) pin.focus();
+    }
+
+    function openPromo() {
+      if (!promo.hidden) return;
+      promo.hidden = false;
+      if (pin) pin.hidden = true;
+      var closeButton = promo.querySelector("[data-promo-close]");
+      if (closeButton) closeButton.focus();
+    }
+
+    openPromo();
+
+    promo.addEventListener("click", function (event) {
+      if (event.target === promo || event.target.closest("[data-promo-close]")) closePromo(true);
+    });
+
+    if (pin) pin.addEventListener("click", openPromo);
+
+    var pick = promo.querySelector("[data-promo-pick]");
+    if (pick) {
+      pick.addEventListener("click", function (event) {
+        event.preventDefault();
+        closePromo(false);
+        var input = document.querySelector('#hero [name="name"]');
+        if (!input) return;
+        input.scrollIntoView({ block: "center" });
+        input.focus();
+      });
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (promo.hidden) return;
+      if (event.key === "Escape") {
+        closePromo(true);
+        return;
+      }
+      if (event.key !== "Tab" || !sheet) return;
+      var nodes = sheet.querySelectorAll("a, button");
+      if (!nodes.length) return;
+      var first = nodes[0];
+      var last = nodes[nodes.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
   }
 })();

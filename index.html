@@ -12,7 +12,8 @@
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#101112" />
     <link rel="canonical" href="https://motogo.by/" />
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" sizes="128x128" />
+    <link rel="icon" href="assets/favicon-dark.png" type="image/png" sizes="128x128" media="(prefers-color-scheme: dark)" />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_BY" />
@@ -44,7 +45,7 @@
     />
 
     <link rel="stylesheet" href="css/tokens.css" />
-    <link rel="stylesheet" href="css/styles.css?v=6" />
+    <link rel="stylesheet" href="css/styles.css?v=14" />
 
     <script type="application/ld+json">
       {
@@ -75,11 +76,14 @@
 
     <header class="header">
       <div class="container header__inner">
-        <a class="logo" href="#hero">Auto<span>Go</span></a>
+        <a class="logo" href="#hero" aria-label="AutoGo">
+          <img class="logo__img logo__img--ink" src="assets/logo-mark.png" alt="" width="105" height="36" />
+          <img class="logo__img logo__img--light" src="assets/logo-mark-light.png" alt="" width="105" height="36" />
+        </a>
         <nav class="nav" id="site-nav" aria-label="Разделы страницы">
           <a href="#kak-my-rabotaem">Как мы работаем</a>
           <a href="#uslugi">Услуги</a>
-          <a href="#otzyvy">Отзывы</a>
+          <a href="#otzyvy" hidden>Отзывы</a>
           <a href="#smi">СМИ</a>
           <a href="#faq">FAQ</a>
         </nav>
@@ -156,9 +160,6 @@
                 novalidate
               >
                 <h2>Рассчитать автомобиль</h2>
-                <p class="form__note" id="hero-form-note">
-                  Услуга — 900 BYN. Менеджер отдельно считает экономику автомобиля по бюджету.
-                </p>
                 <div class="form__row">
                   <label class="field">
                     <span>Имя</span>
@@ -198,7 +199,7 @@
                     <input name="website" type="text" tabindex="-1" autocomplete="off" />
                   </label>
                 </div>
-                <p class="form__status" data-status role="status" aria-describedby="hero-form-note"></p>
+                <p class="form__status" data-status role="status"></p>
                 <button class="button button--primary button--block" type="submit">Рассчитать автомобиль</button>
               </form>
           </div>
@@ -251,10 +252,12 @@
             <h2 id="services-title">Услуги</h2>
           </div>
           <article class="estimate">
-            <p class="estimate__sum">900 <span>BYN</span></p>
-            <div class="estimate__copy">
-              <h3 class="estimate__title">Подбор и доставка автомобиля или мотоцикла из США</h3>
+            <div class="estimate__price">
               <p class="estimate__label">Стоимость услуги</p>
+              <p class="estimate__sum">800 <span>BYN</span></p>
+            </div>
+            <div class="estimate__copy">
+              <h3 class="estimate__title">Подбор и сопровождение доставки автомобиля или мотоцикла из США</h3>
               <p class="estimate__note">
                 Автомобиль, доставка и прочие расходы рассчитываются отдельно. На восстановлении не зарабатываем.
               </p>
@@ -263,7 +266,7 @@
         </div>
       </section>
 
-      <section class="section" id="otzyvy" aria-labelledby="reviews-title">
+      <section class="section" id="otzyvy" aria-labelledby="reviews-title" hidden>
         <div class="container">
           <div class="section__head">
             <h2 id="reviews-title">Отзывы</h2>
@@ -356,56 +359,58 @@
             <article class="faq__item">
               <h3 class="faq__heading">
                 <button class="faq__button" type="button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  Вы восстанавливаете автомобили?
+                  Как происходит оплата за автомобиль?
                   <span class="faq__icon" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
                 <p>
-                  Нет. AutoGo не зарабатывает на ремонте битых автомобилей. В подбор не берём
-                  машину, которую после покупки нужно восстанавливать, чтобы сойтись в цене.
+                  Оплата производится по инвойсу от аукциона через расчётный счёт. Никаких
+                  наличных платежей и скрытых доплат — все расходы прозрачны и подтверждаются
+                  документами.
                 </p>
               </div>
             </article>
             <article class="faq__item">
               <h3 class="faq__heading">
                 <button class="faq__button" type="button" aria-expanded="false" aria-controls="faq-panel-2" id="faq-button-2">
-                  Когда видна экономика сделки?
+                  Сколько времени занимает доставка автомобиля из США?
                   <span class="faq__icon" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="faq__panel" id="faq-panel-2" role="region" aria-labelledby="faq-button-2" hidden>
                 <p>
-                  До покупки. В расчёт входят основные расходы: автомобиль, доставка, пошлины и
-                  сопутствующие платежи. По конкретной машине это считает менеджер.
+                  В среднем доставка занимает 2–3 месяца. Срок зависит от местонахождения
+                  автомобиля, маршрута и особенностей логистики.
                 </p>
               </div>
             </article>
             <article class="faq__item">
               <h3 class="faq__heading">
                 <button class="faq__button" type="button" aria-expanded="false" aria-controls="faq-panel-3" id="faq-button-3">
-                  Сколько стоит услуга?
+                  Как проверить автомобиль перед покупкой?
                   <span class="faq__icon" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="faq__panel" id="faq-panel-3" role="region" aria-labelledby="faq-button-3" hidden>
                 <p>
-                  900 BYN за подбор и доставку автомобиля или мотоцикла. Автомобиль, доставка и
-                  прочие расходы в эту сумму не входят — их менеджер считает отдельно, до покупки.
+                  Мы предоставляем отчёты с доступной информацией об истории автомобиля:
+                  предыдущих владельцах, обслуживании и зафиксированных повреждениях. Это помогает
+                  оценить возможные риски до покупки.
                 </p>
               </div>
             </article>
             <article class="faq__item">
               <h3 class="faq__heading">
                 <button class="faq__button" type="button" aria-expanded="false" aria-controls="faq-panel-4" id="faq-button-4">
-                  Почему на сайте нет каталога?
+                  Как автомобиль защищён от повреждений во время доставки?
                   <span class="faq__icon" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="faq__panel" id="faq-panel-4" role="region" aria-labelledby="faq-button-4" hidden>
                 <p>
-                  Подбор начинается с вашей задачи и бюджета. Витрины случайных лотов здесь нет:
-                  менеджер возвращается с проверенными вариантами и экономикой.
+                  Мы обязательно страхуем каждый автомобиль на время транспортировки. При желании
+                  можно оформить дополнительную страховку для расширенной защиты.
                 </p>
               </div>
             </article>
@@ -420,8 +425,7 @@
           <div class="contacts">
             <p class="footer__label">Контакты</p>
             <p class="contacts__name">Денисенко<br>Ярослав Викторович</p>
-            <p class="contacts__meta"><span>ИП</span><span>УНП 591705197</span></p>
-            <p class="contacts__place">Беларусь, авто из США</p>
+            <p class="contacts__meta"><span>УНП 591705197</span></p>
             <p class="contacts__line" data-phone-row hidden>
               <span class="contacts__label">Телефон</span>
               <span data-phone-value></span>
@@ -435,8 +439,9 @@
             <div class="socials">
               <p class="footer__label">Соцсети</p>
               <ul class="socials__list">
-                <li data-instagram-slot>Instagram</li>
                 <li><a href="https://www.youtube.com/@MotoGOBelarus" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                <li data-tiktok-slot>TikTok</li>
+                <li data-instagram-slot>Instagram</li>
               </ul>
             </div>
             <p class="footer__logo">Auto<span>Go</span></p>
@@ -469,6 +474,7 @@
           <p class="footer__links">
             <a href="cookies.html">Куки</a>
             <a href="privacy.html">Политика конфиденциальности</a>
+            <a href="promo.html">Условия акции</a>
           </p>
         </div>
       </div>
@@ -484,7 +490,31 @@
       <button class="button" type="button" data-cookie-ok>Понятно!</button>
     </div>
 
-    <script src="js/config.js?v=4"></script>
-    <script src="js/main.js?v=5"></script>
+    <div class="promo" data-promo hidden>
+      <div class="promo__sheet" role="dialog" aria-modal="true" aria-labelledby="promo-title">
+        <img
+          class="promo__photo"
+          src="assets/promo-volvo.jpg"
+          width="620"
+          height="442"
+          alt="Серебристый Volvo из США в мастерской: передняя часть разобрана, идёт восстановление"
+        />
+        <div class="promo__copy">
+          <button class="promo__close" type="button" data-promo-close>Закрыть</button>
+          <h2 id="promo-title">Купи автомобиль — выиграй бесплатное восстановление</h2>
+          <p>В этом месяце каждый клиент, купивший автомобиль с нашей помощью, автоматически участвует в розыгрыше.</p>
+          <p class="promo__lead">Один победитель — и восстановление автомобиля за наш счёт.</p>
+          <p>Участвуй в акции и, возможно, именно твой автомобиль мы восстановим бесплатно.</p>
+          <div class="promo__actions">
+            <a href="promo.html">Условия акции</a>
+            <a class="button" href="#hero" data-promo-pick>Подобрать автомобиль</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="promo-pin" type="button" data-promo-pin hidden aria-label="Акция: бесплатное восстановление">Акция</button>
+
+    <script src="js/config.js?v=5"></script>
+    <script src="js/main.js?v=9"></script>
   </body>
 </html>

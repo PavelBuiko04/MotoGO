@@ -12,7 +12,8 @@ window.AUTOGO_CONFIG = {
     { id: "z_yyJVmYxeU", title: "Купил БИТУЮ ТЕСЛУ из США. Сэкономил или попал на деньги?" },
     { id: "C1iLRPx9oO8", title: "Восстановил из пепла Volvo S90 из США" }
   ],
-  instagramUrl: "",
+  instagramUrl: "https://www.instagram.com/yaroslavmotogo/",
+  tiktokUrl: "https://www.tiktok.com/@yaroslavmotogo",
   phoneDisplay: "",
   phoneHref: "",
   messengerLabel: "",
