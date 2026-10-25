@@ -1,6 +1,11 @@
 (function () {
   var config = window.AUTOGO_CONFIG || {};
 
+  if (window.history && window.history.replaceState && /\/index\.html$/i.test(window.location.pathname)) {
+    var cleanPath = window.location.pathname.replace(/index\.html$/i, "");
+    window.history.replaceState(null, "", cleanPath + window.location.search + window.location.hash);
+  }
+
   var yearNode = document.querySelector("[data-year]");
   if (yearNode) yearNode.textContent = String(new Date().getFullYear());
 
@@ -286,7 +291,38 @@
     status.textContent = message;
   }
 
+  function showThanks(form) {
+    form.classList.add("is-sent");
+    var body = form.querySelector(".form__body");
+    var thanks = form.querySelector("[data-form-thanks]");
+    if (body) body.inert = true;
+    if (!thanks) return;
+    thanks.hidden = false;
+    var title = thanks.querySelector("h2");
+    if (!title) return;
+    title.tabIndex = -1;
+    title.focus();
+  }
+
+  function showForm(form) {
+    form.classList.remove("is-sent");
+    var body = form.querySelector(".form__body");
+    var thanks = form.querySelector("[data-form-thanks]");
+    if (thanks) thanks.hidden = true;
+    if (body) body.inert = false;
+    setStatus(form, "", "");
+    var name = form.elements.name;
+    if (name) name.focus();
+  }
+
   document.querySelectorAll("[data-lead-form]").forEach(function (form) {
+    var again = form.querySelector("[data-form-again]");
+    if (again) {
+      again.addEventListener("click", function () {
+        showForm(form);
+      });
+    }
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
 
@@ -335,8 +371,7 @@
         body: JSON.stringify(payload)
       })
         .then(function () {
-          setStatus(form, "ok", "Расчёт ушёл менеджеру. Он свяжется с вами.");
-          form.reset();
+          showThanks(form);
         })
         .catch(function () {
           setStatus(form, "error", "Расчёт не отправился. Попробуйте ещё раз.");

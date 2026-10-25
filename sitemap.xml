@@ -7,19 +7,19 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://motogo.by/cookies.html</loc>
+    <loc>https://motogo.by/cookies/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://motogo.by/privacy.html</loc>
+    <loc>https://motogo.by/privacy/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://motogo.by/promo.html</loc>
+    <loc>https://motogo.by/promo/</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>

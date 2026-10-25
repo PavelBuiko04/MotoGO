@@ -45,7 +45,7 @@
     />
 
     <link rel="stylesheet" href="css/tokens.css" />
-    <link rel="stylesheet" href="css/styles.css?v=14" />
+    <link rel="stylesheet" href="css/styles.css?v=16" />
 
     <script type="application/ld+json">
       {
@@ -159,6 +159,7 @@
                 aria-label="Рассчитать автомобиль"
                 novalidate
               >
+                <div class="form__body">
                 <h2>Рассчитать автомобиль</h2>
                 <div class="form__row">
                   <label class="field">
@@ -201,6 +202,12 @@
                 </div>
                 <p class="form__status" data-status role="status"></p>
                 <button class="button button--primary button--block" type="submit">Рассчитать автомобиль</button>
+                </div>
+                <div class="form__thanks" data-form-thanks hidden>
+                  <h2>Большое спасибо!</h2>
+                  <p>Мы уже рассматриваем вашу заявку и скоро свяжемся с вами.</p>
+                  <button class="form__again" type="button" data-form-again>Отправить ещё раз</button>
+                </div>
               </form>
           </div>
         </div>
@@ -448,6 +455,7 @@
           </div>
         </div>
         <form class="form" data-lead-form data-source="footer" aria-label="Заявка в подвале" novalidate>
+          <div class="form__body">
           <h2>Рассчитать автомобиль</h2>
           <p class="form__note">Имя и телефон. Бюджет можно дописать менеджеру.</p>
           <label class="field">
@@ -466,15 +474,21 @@
           </div>
           <p class="form__status" data-status role="status"></p>
           <button class="button button--primary button--block" type="submit">Рассчитать автомобиль</button>
+          </div>
+          <div class="form__thanks" data-form-thanks hidden>
+            <h2>Большое спасибо!</h2>
+            <p>Мы уже рассматриваем вашу заявку и скоро свяжемся с вами.</p>
+            <button class="form__again" type="button" data-form-again>Отправить ещё раз</button>
+          </div>
         </form>
       </div>
       <div class="container">
         <div class="footer__legal">
           <p>© <span data-year>2026</span> AutoGo. ИП Денисенко Ярослав Викторович, УНП 591705197.</p>
           <p class="footer__links">
-            <a href="cookies.html">Куки</a>
-            <a href="privacy.html">Политика конфиденциальности</a>
-            <a href="promo.html">Условия акции</a>
+            <a href="/cookies/">Куки</a>
+            <a href="/privacy/">Политика конфиденциальности</a>
+            <a href="/promo/">Условия акции</a>
           </p>
         </div>
       </div>
@@ -485,7 +499,7 @@
         Этот сайт использует файлы cookie. Собранная при помощи cookie информация не может
         идентифицировать вас, однако может помочь нам улучшить работу нашего сайта. Продолжая
         использовать сайт, вы даете согласие на
-        <a href="cookies.html">обработку файлов cookie</a>.
+        <a href="/cookies/">обработку файлов cookie</a>.
       </p>
       <button class="button" type="button" data-cookie-ok>Понятно!</button>
     </div>
@@ -506,7 +520,7 @@
           <p class="promo__lead">Один победитель — и восстановление автомобиля за наш счёт.</p>
           <p>Участвуй в акции и, возможно, именно твой автомобиль мы восстановим бесплатно.</p>
           <div class="promo__actions">
-            <a href="promo.html">Условия акции</a>
+            <a href="/promo/">Условия акции</a>
             <a class="button" href="#hero" data-promo-pick>Подобрать автомобиль</a>
           </div>
         </div>
@@ -515,6 +529,6 @@
     <button class="promo-pin" type="button" data-promo-pin hidden aria-label="Акция: бесплатное восстановление">Акция</button>
 
     <script src="js/config.js?v=5"></script>
-    <script src="js/main.js?v=9"></script>
+    <script src="js/main.js?v=12"></script>
   </body>
 </html>
