@@ -1169,7 +1169,7 @@ body:has(.cookie:not([hidden])) {
   display: grid;
   grid-template-columns: minmax(200px, 340px) minmax(0, 1fr);
   gap: 28px 56px;
-  align-items: center;
+  align-items: start;
 }
 
 .cookie-page__mark {
