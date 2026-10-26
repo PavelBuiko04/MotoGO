@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://motogo.by/</loc>
+    <loc>https://autogo.by/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://motogo.by/cookies/</loc>
+    <loc>https://autogo.by/cookies/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://motogo.by/privacy/</loc>
+    <loc>https://autogo.by/privacy/</loc>
     <lastmod>2026-10-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://motogo.by/promo/</loc>
+    <loc>https://autogo.by/consent/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://autogo.by/promo/</loc>
     <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>

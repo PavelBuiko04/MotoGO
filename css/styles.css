@@ -587,6 +587,10 @@ h2 {
   font-size: 22px;
 }
 
+.hero__sheet .form h2 {
+  font-size: clamp(28px, 3vw, 36px);
+}
+
 .form__row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1058,10 +1062,10 @@ h2 {
 
 .contacts__name {
   margin: 0;
-  font-size: clamp(28px, 3.4vw, 40px);
+  font-size: 18px;
   font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1.05;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
 .contacts__meta {
@@ -1089,18 +1093,19 @@ h2 {
 
 .socials__list {
   display: grid;
-  gap: 2px;
+  gap: 4px;
 }
 
 .socials__list li {
   display: flex;
   align-items: center;
-  min-height: 44px;
+  gap: 12px;
+  min-height: 40px;
 }
 
 .socials__list a,
 .socials__list li {
-  font-size: clamp(20px, 2vw, 26px);
+  font-size: 22px;
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.15;
@@ -1109,9 +1114,16 @@ h2 {
 .socials__list a {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
+  gap: 12px;
+  min-height: 40px;
   color: inherit;
   text-decoration: none;
+}
+
+.socials__mark {
+  width: 28px;
+  height: 28px;
+  flex: none;
 }
 
 .socials__list a:hover {
@@ -1179,6 +1191,78 @@ body:has(.cookie:not([hidden])) {
   color: var(--color-body);
 }
 
+.policy {
+  max-width: 72ch;
+}
+
+.policy__who {
+  margin: 0 0 28px;
+  color: var(--color-ink);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.policy h2 {
+  margin: 40px 0 14px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.policy p,
+.policy li {
+  color: var(--color-body);
+  line-height: 1.5;
+}
+
+.policy p {
+  max-width: none;
+  margin: 0 0 14px;
+}
+
+.policy ul,
+.policy ol {
+  margin: 0 0 16px;
+  padding-left: 1.35em;
+}
+
+.policy ul {
+  list-style: disc;
+}
+
+.policy ol {
+  list-style: decimal;
+}
+
+.policy li + li {
+  margin-top: 8px;
+}
+
+.policy ol {
+  margin: 0;
+  padding-left: 1.3em;
+}
+
+.policy ol > li {
+  margin-top: 18px;
+}
+
+.policy ol > li > p {
+  margin: 0 0 10px;
+}
+
+.form__consent {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.form__consent a {
+  color: var(--color-ink);
+}
+
 .cookie {
   position: fixed;
   z-index: 30;
@@ -1216,10 +1300,14 @@ body:has(.cookie:not([hidden])) {
   display: grid;
   grid-template-columns: minmax(240px, 42%) minmax(0, 1fr);
   width: min(920px, 100%);
-  max-height: min(560px, calc(100vh - 150px));
+  max-height: min(640px, calc(100vh - 120px));
   overflow: hidden;
   background: var(--color-white);
   color: var(--color-ink);
+}
+
+.promo__sheet:focus {
+  outline: none;
 }
 
 .promo__photo {
@@ -1253,14 +1341,15 @@ body:has(.cookie:not([hidden])) {
 }
 
 .promo__sheet h2 {
-  max-width: 12ch;
-  margin: 0 0 18px;
+  max-width: 14ch;
+  margin: 0 0 16px;
+  padding-right: 64px;
   color: var(--color-ink);
   font-family: var(--font-display);
-  font-size: clamp(30px, 3.4vw, 44px);
+  font-size: clamp(28px, 3vw, 40px);
   font-weight: 700;
   letter-spacing: -0.045em;
-  line-height: 0.9;
+  line-height: 0.92;
 }
 
 .promo__sheet p {
@@ -1374,16 +1463,26 @@ body:has(.cookie:not([hidden])) .promo-pin {
   }
 
   .promo__photo {
-    height: 210px;
+    height: 150px;
     min-height: 0;
   }
 
   .promo__copy {
-    padding: 48px 20px 22px;
+    padding: 44px 20px 18px;
   }
 
   .promo__sheet h2 {
-    max-width: 14ch;
+    max-width: 16ch;
+    margin-bottom: 10px;
+    padding-right: 72px;
+  }
+
+  .promo__sheet p {
+    margin-bottom: 8px;
+  }
+
+  .promo__actions {
+    margin-top: 14px;
   }
 }
 
@@ -1619,10 +1718,6 @@ body:has(.cookie:not([hidden])) .promo-pin {
     align-items: flex-start;
     flex-direction: column;
     gap: 22px;
-  }
-
-  .contacts__name {
-    font-size: clamp(26px, 8vw, 32px);
   }
 
   .footer__logo {

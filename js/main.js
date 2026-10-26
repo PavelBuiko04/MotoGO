@@ -71,11 +71,15 @@
   function setLink(selector, url, label) {
     var slot = document.querySelector(selector);
     if (!slot || !url) return;
+    var icon = slot.querySelector(".socials__mark");
     var link = document.createElement("a");
     link.href = url;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    link.textContent = label;
+    if (icon) link.appendChild(icon);
+    var text = document.createElement("span");
+    text.textContent = label;
+    link.appendChild(text);
     slot.replaceChildren(link);
   }
 
@@ -421,8 +425,7 @@
       if (!promo.hidden) return;
       promo.hidden = false;
       if (pin) pin.hidden = true;
-      var closeButton = promo.querySelector("[data-promo-close]");
-      if (closeButton) closeButton.focus();
+      if (sheet) sheet.focus();
     }
 
     openPromo();

@@ -1,8 +1,8 @@
-# Домен-плейсхолдер: заменить на боевой перед публикацией.
+# Сайт: https://autogo.by/
 User-agent: *
 Allow: /
 
 # Рабочие заметки не индексировать, если на сервер попадёт папка docs.
 Disallow: /docs/
 
-Sitemap: https://motogo.by/sitemap.xml
+Sitemap: https://autogo.by/sitemap.xml
