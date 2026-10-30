@@ -45,7 +45,7 @@
     />
 
     <link rel="stylesheet" href="css/tokens.css" />
-    <link rel="stylesheet" href="css/styles.css?v=24" />
+    <link rel="stylesheet" href="css/styles.css?v=28" />
 
     <script type="application/ld+json">
       {
@@ -538,6 +538,16 @@
         />
         <div class="promo__copy">
           <button class="promo__close" type="button" data-promo-close>Закрыть</button>
+          <svg class="promo__tree" viewBox="0 0 100 140" aria-hidden="true">
+            <path fill="#101112" d="M50 28 66 52h-8l20 24h-12l28 34H6l28-34H22l20-24h-8z" />
+            <path fill="none" stroke="#FF7A00" stroke-width="2.6" stroke-linecap="round" d="M40 46c4 5 16 5 20 0M32 70c8 7 28 7 36 0M22 98c12 10 44 10 56 0" />
+            <circle cx="46" cy="48" r="3.6" fill="#FF7A00" />
+            <circle cx="60" cy="72" r="4.2" fill="#fff" />
+            <circle cx="38" cy="96" r="4" fill="#FF7A00" />
+            <circle cx="64" cy="100" r="3.4" fill="#fff" />
+            <rect x="43" y="110" width="14" height="12" rx="1.5" fill="#FF7A00" />
+            <path fill="#FF7A00" d="M50 2l4.6 11h11.6l-9.4 7 3.6 11.2L50 24.2 39.6 31.2 43.2 20 33.8 13h11.6z" />
+          </svg>
           <h2 id="promo-title"><span aria-hidden="true">🎁 </span>Новогодний розыгрыш от AutoGo!</h2>
           <p>Покупай автомобиль с нашей помощью с 1 ноября по 29 декабря 2026 года и участвуй в розыгрыше новогоднего подарка!</p>
           <p class="promo__lead"><span aria-hidden="true">🎄 </span>30 декабря выберем одного победителя, которому Ярослав бесплатно выполнит работы по восстановлению автомобиля.</p>
@@ -550,7 +560,50 @@
         </div>
       </div>
     </div>
-    <button class="promo-pin" type="button" data-promo-pin hidden aria-label="Акция: новогодний розыгрыш">Акция</button>
+    <button class="promo-pin" type="button" data-promo-pin hidden aria-label="Акция: новогодний розыгрыш">
+      <svg class="promo-pin__defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <symbol id="promo-flake" viewBox="0 0 24 24">
+          <g fill="currentColor">
+            <g>
+              <rect x="11.2" y="1.1" width="1.6" height="21.8" rx="0.8" />
+              <circle cx="12" cy="1.7" r="1.2" />
+              <circle cx="12" cy="22.3" r="1.2" />
+              <path d="M12 6.5 9.15 4.15 9.9 3.2 12 5.05 14.1 3.2 14.85 4.15Z" />
+              <path d="M12 17.5 9.15 19.85 9.9 20.8 12 18.95 14.1 20.8 14.85 19.85Z" />
+            </g>
+            <g transform="rotate(60 12 12)">
+              <rect x="11.2" y="1.1" width="1.6" height="21.8" rx="0.8" />
+              <circle cx="12" cy="1.7" r="1.2" />
+              <circle cx="12" cy="22.3" r="1.2" />
+              <path d="M12 6.5 9.15 4.15 9.9 3.2 12 5.05 14.1 3.2 14.85 4.15Z" />
+              <path d="M12 17.5 9.15 19.85 9.9 20.8 12 18.95 14.1 20.8 14.85 19.85Z" />
+            </g>
+            <g transform="rotate(120 12 12)">
+              <rect x="11.2" y="1.1" width="1.6" height="21.8" rx="0.8" />
+              <circle cx="12" cy="1.7" r="1.2" />
+              <circle cx="12" cy="22.3" r="1.2" />
+              <path d="M12 6.5 9.15 4.15 9.9 3.2 12 5.05 14.1 3.2 14.85 4.15Z" />
+              <path d="M12 17.5 9.15 19.85 9.9 20.8 12 18.95 14.1 20.8 14.85 19.85Z" />
+            </g>
+          </g>
+        </symbol>
+      </svg>
+      <span class="promo-pin__snow" aria-hidden="true">
+        <svg class="promo-pin__flake" viewBox="0 0 24 24"><use href="#promo-flake" /></svg>
+        <svg class="promo-pin__flake" viewBox="0 0 24 24"><use href="#promo-flake" /></svg>
+        <svg class="promo-pin__flake" viewBox="0 0 24 24"><use href="#promo-flake" /></svg>
+        <svg class="promo-pin__flake" viewBox="0 0 24 24"><use href="#promo-flake" /></svg>
+        <svg class="promo-pin__flake" viewBox="0 0 24 24"><use href="#promo-flake" /></svg>
+        <svg class="promo-pin__flake" viewBox="0 0 24 24"><use href="#promo-flake" /></svg>
+        <svg class="promo-pin__flake" viewBox="0 0 24 24"><use href="#promo-flake" /></svg>
+      </span>
+      <svg class="promo-pin__tree" viewBox="0 0 24 32" aria-hidden="true">
+        <path fill="#fff" d="M12 8 15.4 13h-1.8l4.2 5h-2.6l5.8 7H3l5.8-7H6.2l4.2-5H8.6z" />
+        <path fill="#FF7A00" d="M12 1.2 13.2 4.4h3.4l-2.8 2 1 3.2L12 7.6 9.2 9.6l1-3.2-2.8-2h3.4z" />
+        <rect x="10.1" y="25.2" width="3.8" height="2.8" rx=".4" fill="#FF7A00" />
+      </svg>
+      <span>Акция</span>
+    </button>
 
     <script src="js/config.js?v=5"></script>
     <script src="js/main.js?v=14"></script>
